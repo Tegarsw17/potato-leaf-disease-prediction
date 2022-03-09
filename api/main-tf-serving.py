@@ -5,9 +5,25 @@ from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 import requests
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
 endpoint = "http://localhost:8502/v1/models/potatoes_model:predict"
+
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
 
