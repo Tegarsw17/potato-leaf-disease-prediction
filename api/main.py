@@ -7,6 +7,7 @@ import tensorflow as tf
 
 app = FastAPI()
 
+
 MODEL = tf.keras.models.load_model("../models/4")
 CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
 
